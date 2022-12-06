@@ -2,12 +2,13 @@
 
 public class InviteToUserDTO
 {
-    public int InviteID { get; set; }
+    public int InviteId { get; set; }
     public bool? IsPending { get; set; }
     public DateTime? InviteTime { get; set; }
-    public int? RecieverID { get; set; }
+    public int? RecieverId { get; set; }
     public string? Message { get; set; }
-    public int GroupID { get; set; }
+    public int GroupId { get; set; }
+    public int SenderId { get; set; }
     public string? GroupName { get; set; }
     public string? Description { get; set; }
     public bool? HasConcluded { get; set; }

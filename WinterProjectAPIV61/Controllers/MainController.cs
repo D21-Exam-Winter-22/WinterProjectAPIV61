@@ -39,7 +39,7 @@ namespace WinterProjectAPIV61.Controllers
             //string EncodedValue = Functions.Base64.Encode(toEncode);
             string EncodedValue = GenerateRandomString.CreateString(20);
 
-            List<ShareUser> UsersList = await context.ShareUsers.Where(user => user.UserName == request.Username && user.Password == request.Password).ToListAsync();
+            List<ShareUser> UsersList = await context.ShareUsers.Where(user => string.Equals(user.UserName, request.Username) && string.Equals(user.Password, request.Password)).ToListAsync();
             if (UsersList.Count == 0)
             {
                 return NotFound("Invalid user details");
@@ -74,7 +74,7 @@ namespace WinterProjectAPIV61.Controllers
         [HttpGet("GetUserIDOnToken/{token}")]
         public async Task<ActionResult<int>> GetUserIDOnToken(string token)
         {
-            int TheKey = TokenDictionary.FirstOrDefault(x => x.Value == token).Key;
+            int TheKey = TokenDictionary.FirstOrDefault(x => string.Equals(x.Value, token)).Key;
             return Ok(TheKey);
         }
 

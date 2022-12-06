@@ -231,6 +231,14 @@ namespace WinterProjectAPIV61.Controllers
                 await context.SaveChangesAsync();
             }
             
+            //Delete invites from that user
+            foreach (UserGroup userGroup in usergroups)
+            {
+                await context.Invites.Where(entry => entry.FromUserGroupId == userGroup.UserGroupId)
+                    .ExecuteDeleteAsync();
+                await context.SaveChangesAsync();
+            }
+            
             //Update group's last active date
             ShareGroup TheGroup = await context.ShareGroups.FindAsync(request.GroupID);
             TheGroup.LastActiveDate = DateTime.Now;
@@ -257,6 +265,11 @@ namespace WinterProjectAPIV61.Controllers
                 };
                 await RemoveMemberFromGroup(UserGroupToRemove);
             }
+
+            await context.Invites.Where(entry => entry.ToUserId == UserID).ExecuteDeleteAsync();
+            await context.SaveChangesAsync();
+            
+            
             //Then delete the user
             await context.ShareUsers.Where(entry => entry.UserId == UserID).ExecuteDeleteAsync();
             await context.SaveChangesAsync();

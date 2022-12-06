@@ -86,7 +86,6 @@ namespace WinterProjectAPIV61.Controllers
         [HttpPost("CreateUser")]
         public async Task<ActionResult<List<ShareUser>>> CreateShareUser(CreateShareUserDto request)
         {
-
             //Check if the username already exists in the DB
             List<ShareUser> ExistingUsers = await context.ShareUsers.Where(User => User.UserName == request.UserName).ToListAsync();
             if (ExistingUsers.Count > 0)
@@ -105,6 +104,7 @@ namespace WinterProjectAPIV61.Controllers
                     return Ok(string.Format("{0} has been blacklisted", request.Email));
                 }
             }
+            
 
             //Create the user to insert
             ShareUser UserToInsert = new ShareUser
@@ -122,6 +122,24 @@ namespace WinterProjectAPIV61.Controllers
                 IsDisabled = false,
                 IsBlacklisted = false
             };
+
+            if (UserToInsert.PhoneNumber == null || UserToInsert.PhoneNumber.Length == 0)
+            {
+                UserToInsert.PhoneNumber = "11111111";
+            }
+
+            if (UserToInsert.Address == null || UserToInsert.Address.Length == 0)
+            {
+                UserToInsert.Address = "No Address";
+            }
+
+            if (UserToInsert.QuestionId == null || UserToInsert.QuestionId == 0)
+            {
+                UserToInsert.QuestionId = 6; ///////////////////////////////////THIS ONE NEEDS TO BE CHANGED NEXT ITERATION
+                UserToInsert.SecurityAnswer = "No Answer";
+            }
+            
+            
 
             //Insert the user
             await context.ShareUsers.AddAsync(UserToInsert);
