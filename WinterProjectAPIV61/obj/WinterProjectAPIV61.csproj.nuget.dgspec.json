@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\allan\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\WinterProjectAPIV61.csproj": {}
+    "C:\\Users\\Esben\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\WinterProjectAPIV61.csproj": {}
   },
   "projects": {
-    "C:\\Users\\allan\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\WinterProjectAPIV61.csproj": {
+    "C:\\Users\\Esben\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\WinterProjectAPIV61.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\allan\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\WinterProjectAPIV61.csproj",
+        "projectUniqueName": "C:\\Users\\Esben\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\WinterProjectAPIV61.csproj",
         "projectName": "WinterProjectAPIV61",
-        "projectPath": "C:\\Users\\allan\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\WinterProjectAPIV61.csproj",
-        "packagesPath": "C:\\Users\\allan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\allan\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\obj\\",
+        "projectPath": "C:\\Users\\Esben\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\WinterProjectAPIV61.csproj",
+        "packagesPath": "C:\\Users\\Esben\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Esben\\source\\repos\\WinterProjectAPIV61\\WinterProjectAPIV61\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\allan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Esben\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,20 +70,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
-              "version": "[6.0.11, 6.0.11]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[6.0.11, 6.0.11]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.linux-x64",
-              "version": "[6.0.11, 6.0.11]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -97,12 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "linux-x64": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

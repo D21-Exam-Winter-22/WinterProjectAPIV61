@@ -218,7 +218,7 @@ namespace WinterProjectAPIV61.Controllers
                     SecurityAnswer = User.SecurityAnswer,
                     IsDisabled = User.IsDisabled,
                     IsBlacklisted = User.IsBlacklisted,
-                    Question = User.Question.Question
+                    Question = User.Question != null ? User.Question.Question : "No Question"
                 };
                 CustomizedSearchList.Add(CustomizedUser);
             }
