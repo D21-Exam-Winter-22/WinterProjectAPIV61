@@ -64,8 +64,6 @@ namespace WinterProjectAPIV61.Controllers
             
             UserGroup TheUserGroup = UserGroupList.First();
 
-           
-            
             Invite InviteToInsert = new Invite
             {
                 IsPending = true,

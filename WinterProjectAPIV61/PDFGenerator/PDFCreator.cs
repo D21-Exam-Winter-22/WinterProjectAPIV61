@@ -13,13 +13,11 @@ namespace WinterProjectAPIV61.PDFGenerator
         {
             this.ListOfUserGroupShares = ListOfUserGroupShares;
             this.context = context;
-            
-            
         }
 
         public string CreatePDF()
         {
-            string FileName = string.Format("{0} Sumarry.pdf", GetGroupame());
+            string FileName = string.Format("{0} Summary.pdf", GetGroupame());
             FileStream fs = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
             Document doc = new Document();
             using (PdfWriter writer = PdfWriter.GetInstance(doc, fs))
@@ -196,10 +194,8 @@ namespace WinterProjectAPIV61.PDFGenerator
                 //Write that the group is ongoing and shares are not final
                 BottomText = "Group is on-going so the shares are are subject to change";
             }
-            
             InsertCustomParagraphIntoDocument(doc, BottomText, Font.FontFamily.TIMES_ROMAN, BaseColor.BLACK, 12, Element.ALIGN_LEFT);
         }
 
-      
     }
 }

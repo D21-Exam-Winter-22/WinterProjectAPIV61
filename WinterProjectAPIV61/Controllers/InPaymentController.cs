@@ -18,14 +18,25 @@ namespace WinterProjectAPIV61.Controllers
         }
 
         [HttpPost("PayIntoGroupPool")]
-        public async Task<ActionResult<string>> PayIntoGroupPool(InPaymentDto request)
+        public async Task<ActionResult<string>> PayIntoGroupPool(CreatePaymentDTO request)
         {
+            //Get the usergroupid for that userid and groupid
+            List<UserGroup> ListOfUserGroups = await context.UserGroups.Where(entry =>
+                entry.UserId == request.UserId && entry.GroupId == request.GroupId).ToListAsync();
+
+            if (ListOfUserGroups.Count == 0)
+            {
+                return Ok("UserGroup doesn't exist");
+            }
+
+            UserGroup TheUserGroup = ListOfUserGroups.First();
+            int TheUserGroupID = TheUserGroup.UserGroupId;
 
 
             //Create an InPayment Object
             InPayment InPayment = new InPayment
             {
-                UserGroupId = request.UserGroupId,
+                UserGroupId = TheUserGroupID,
                 Amount = request.Amount,
                 DatePaid = DateTime.Now
             };
@@ -34,25 +45,28 @@ namespace WinterProjectAPIV61.Controllers
             await context.SaveChangesAsync();
 
             //Get GroupID from UserGroupID
+            /*
             var GetGroupIDQuery = from usergroup in context.UserGroups
-                                  where usergroup.UserGroupId == request.UserGroupId
+                                  where usergroup.UserGroupId == TheUserGroupID
                                   select new
                                   {
                                       usergroup.UserGroupId,
                                       usergroup.UserId,
                                       usergroup.GroupId
                                   };
-            int GroupID = -1;
+            
+            
             foreach (var record in GetGroupIDQuery)
             {
                 GroupID = (int)record.GroupId;
             }
+            */
+            int GroupID = (int)request.GroupId;
             //Update the group's Last active date
             ShareGroup TheGroup = await context.ShareGroups.FindAsync(GroupID);
             TheGroup.LastActiveDate = DateTime.Now;
             await context.SaveChangesAsync();
             //Using the GroupID, query for all expenditures in the group
-
             return Ok("Paid into pool");
         }
 

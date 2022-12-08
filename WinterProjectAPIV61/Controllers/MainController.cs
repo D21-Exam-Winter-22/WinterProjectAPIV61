@@ -24,8 +24,6 @@ namespace WinterProjectAPIV61.Controllers
             
         }
 
-        
-
         [HttpGet("IsOnline")]
         public bool ApplicationIsOnline()
         {
@@ -76,6 +74,22 @@ namespace WinterProjectAPIV61.Controllers
         {
             int TheKey = TokenDictionary.FirstOrDefault(x => string.Equals(x.Value, token)).Key;
             return Ok(TheKey);
+        }
+        
+        [HttpGet("GetUserIDUserNameOnToken/{token}")]
+        public async Task<ActionResult<UserIDUserNameOnTokenDTO>> GetUserIDUserNameOnToken(string token)
+        {
+            int TheKey = TokenDictionary.FirstOrDefault(x => string.Equals(x.Value, token)).Key;
+
+            ShareUser TheUser = await context.ShareUsers.FindAsync(TheKey);
+
+            UserIDUserNameOnTokenDTO UserDetails = new UserIDUserNameOnTokenDTO
+            {
+                UserID = TheKey,
+                UserName = TheUser.UserName
+            };
+            
+            return Ok(UserDetails);
         }
 
     }
