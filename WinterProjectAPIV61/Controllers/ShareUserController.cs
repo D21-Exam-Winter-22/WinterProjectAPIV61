@@ -135,7 +135,7 @@ namespace WinterProjectAPIV61.Controllers
 
             if (UserToInsert.QuestionId == null || UserToInsert.QuestionId == 0)
             {
-                UserToInsert.QuestionId = 6; ///////////////////////////////////THIS ONE NEEDS TO BE CHANGED NEXT ITERATION
+                UserToInsert.QuestionId = 1; ///////////////////////////////////THIS ONE NEEDS TO BE CHANGED NEXT ITERATION
                 UserToInsert.SecurityAnswer = "No Answer";
             }
             
