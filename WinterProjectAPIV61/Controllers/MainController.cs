@@ -92,5 +92,11 @@ namespace WinterProjectAPIV61.Controllers
             return Ok(UserDetails);
         }
 
+        [HttpGet("GetWholeDictionary")]
+        public async Task<ActionResult<Dictionary<int, string>>> GetTokenDictionary()
+        {
+            return Ok(TokenDictionary);
+        }
+
     }
 }

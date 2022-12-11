@@ -187,7 +187,7 @@ namespace WinterProjectAPIV61.PDFGenerator
                 //Set the due date 30 days into the future
                 DateTime ConclusionDate = (DateTime)TheGroup.ConclusionDate;
                 DateTime DueDate = ConclusionDate.AddDays(30);
-                BottomText = string.Format("Individual shares have to be paid by {0} or incur the wrath or a siberian prison", DueDate.ToString());
+                BottomText = string.Format("Individual shares have to be paid by {0} or incur the wrath of a siberian prison", DueDate.ToString());
             }
             else
             {

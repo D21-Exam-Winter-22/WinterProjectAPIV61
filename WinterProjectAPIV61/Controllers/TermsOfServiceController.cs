@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Timers;
+using WinterProjectAPIV61.DataTransferObjects;
 using WinterProjectAPIV61.Models;
 using Timer = System.Timers.Timer;
 
@@ -16,18 +17,9 @@ namespace WinterProjectAPIV61.Controllers
         public TermsOfServiceController(PaymentApidb3Context context)
         {
             this.context = context;
-
-            Timer t = new Timer(2);
-            t.AutoReset = true;
-            t.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            //t.Start();
-
         }
 
-        private async void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-            InsertNewTermsOfService("Timer test");
-        }
+        
 
         [HttpGet("GetAllTermsOfServices")]
         public async Task<ActionResult<List<TermsOfService>>> GetAllTermsOfServices()
@@ -36,13 +28,13 @@ namespace WinterProjectAPIV61.Controllers
         }
 
         [HttpPost("InsertNewTermsOfService")]
-        public async Task<ActionResult<string>> InsertNewTermsOfService(string NewToSContent)
+        public async Task<ActionResult<string>> InsertNewTermsOfService(InsertToSDTO request)
         {
             TermsOfService ToSToInsert = new TermsOfService
             {
                 CreationDate = DateTime.Now,
                 LastModificationDate = DateTime.Now,
-                Content = NewToSContent
+                Content = request.lawyerSoup
             };
 
             await context.AddAsync(ToSToInsert);

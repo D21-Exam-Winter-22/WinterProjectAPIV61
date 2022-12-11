@@ -239,6 +239,8 @@ namespace WinterProjectAPIV61.Controllers
                 await context.SaveChangesAsync();
             }
             
+            
+            
             //Update group's last active date
             ShareGroup TheGroup = await context.ShareGroups.FindAsync(request.GroupID);
             TheGroup.LastActiveDate = DateTime.Now;
