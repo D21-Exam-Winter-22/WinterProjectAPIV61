@@ -42,6 +42,8 @@ namespace WinterProjectAPIV61.Controllers
             {
                 return NotFound("Invalid user details");
             }
+            
+            //The selected user
             ShareUser user = UsersList.First();
 
             //Check if the key is already present in the dictionary
@@ -50,6 +52,16 @@ namespace WinterProjectAPIV61.Controllers
                 return Ok("Already logged in");
             }
 
+            if ((bool)user.IsBlacklisted)
+            {
+                return Ok("Unable to log into a blacklisted account");
+            }
+
+            if ((bool)user.IsDisabled)
+            {
+                return Ok("This account has been disabled");
+            }
+            
             TokenDictionary.Add(user.UserId, EncodedValue);
 
             return Ok(EncodedValue);
@@ -58,15 +70,8 @@ namespace WinterProjectAPIV61.Controllers
         [HttpPost("Logout/{UserID}")]
         public async Task<ActionResult<string>> LogOutRemoveToken(int UserID)
         {
-            if (TokenDictionary.ContainsKey(UserID))
-            {
-                TokenDictionary.Remove(UserID);
-                return Ok("Successfully Logged out");
-            }
-            else
-            {
-                return Ok("Token not found");
-            }
+            string ReturnString = LogOutClass.LogOut(TokenDictionary, UserID);
+            return Ok(ReturnString);
         }
 
         [HttpGet("GetUserIDOnToken/{token}")]
