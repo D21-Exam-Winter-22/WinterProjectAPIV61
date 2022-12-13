@@ -118,7 +118,7 @@ namespace WinterProjectAPIV61.Controllers
                 UserInPaymentsDto NewEntry = new UserInPaymentsDto
                 {
                     TransactionID = entry.TransactionId,
-                    Amount = entry.Amount,
+                    PaidAmount = entry.Amount,
                     UserGroupID = entry.UserGroupId,
                     GroupID = (int)entry.GroupID,
                     UserID = entry.UserId,

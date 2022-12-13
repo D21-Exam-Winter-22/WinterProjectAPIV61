@@ -285,4 +285,41 @@ public class UnitTest1
         
         Assert.Equal(ExpectedListOfDormantGroups, ActualListOfDormantGroups);
     }
+
+    [Fact]
+    public void LogOutTest0()
+    {
+        //Testing when there are no key value pairs in the dictionary
+        Dictionary<int, string> TokenDictionary = new Dictionary<int, string>();
+        string ActualResponse = LogOutClass.LogOut(TokenDictionary, 1);
+        string ExpectedResponse = "No users currently logged in";
+        Assert.Equal(ExpectedResponse, ActualResponse);
+
+    }
+
+    [Fact]
+    public void LogOutTest1()
+    {
+        //Testing when there is the correct key value pair in the dictionary
+        Dictionary<int, string> TokenDictionary = new Dictionary<int, string>();
+        TokenDictionary.Add(1, "Token1");
+        TokenDictionary.Add(2, "Token2");
+        TokenDictionary.Add(3, "Token3");
+        string ActualResponse = LogOutClass.LogOut(TokenDictionary, 1);
+        string ExpectedResponse = "Successfully Logged out";
+        Assert.Equal(ExpectedResponse, ActualResponse);
+    }
+
+    [Fact]
+    public void LogOuttest2()
+    {
+        //Testing when the correct key value pair is not present in the dictionary
+        Dictionary<int, string> TokenDictionary = new Dictionary<int, string>();
+        TokenDictionary.Add(1, "Token1");
+        TokenDictionary.Add(2, "Token2");
+        TokenDictionary.Add(3, "Token3");
+        string ActualResponse = LogOutClass.LogOut(TokenDictionary, 4);
+        string ExpectedResponse = "Token not found";
+        Assert.Equal(ExpectedResponse, ActualResponse);
+    }
 }

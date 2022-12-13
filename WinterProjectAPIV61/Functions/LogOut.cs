@@ -6,16 +6,22 @@ public class LogOutClass
 {
     public static string LogOut(Dictionary<int, string> TokenDictionary, int UserID)
     {
+        string TextToReturn = "";
         if (TokenDictionary.IsNullOrEmpty())
         {
-            return "No users currently logged in";
+            TextToReturn = "No users currently logged in";
+            return TextToReturn;
         }
         if (TokenDictionary.ContainsKey(UserID))
         {
             TokenDictionary.Remove(UserID);
-            return "Successfully Logged out";
+            TextToReturn = "Successfully Logged out";
+        }
+        else
+        {
+            TextToReturn = "Token not found";
         }
         
-        return "Token not found";
+        return TextToReturn;
     }
 }

@@ -3,7 +3,7 @@
     public class UserInPaymentsDto
     {
         public int? TransactionID { get; set; }
-        public double? Amount { get; set; }
+        public double? PaidAmount { get; set; }
         public int? UserGroupID { get; set; }
         public int? GroupID { get; set; }
         public int? UserID { get; set; }
